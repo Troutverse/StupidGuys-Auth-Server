@@ -20,6 +20,12 @@ namespace Persistence
                 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
                     ?? builder.Configuration.GetConnectionString("Default");
 
+                // Render는 postgresql://을 사용하지만 Npgsql은 postgres://를 요구함
+                if (!string.IsNullOrEmpty(connectionString) && connectionString.StartsWith("postgresql://"))
+                {
+                    connectionString = connectionString.Replace("postgresql://", "postgres://");
+                }
+
                 options.UseNpgsql(connectionString)
                     .EnableSensitiveDataLogging() // 개발 디버깅용
                     .EnableDetailedErrors(); // 개발 디버깅용
