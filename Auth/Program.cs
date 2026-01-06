@@ -20,11 +20,17 @@ namespace Persistence
                 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
                     ?? builder.Configuration.GetConnectionString("Default");
 
+                // 디버깅용 로그
+                Console.WriteLine($"[DEBUG] Original connectionString: {connectionString?.Substring(0, Math.Min(50, connectionString?.Length ?? 0))}...");
+
                 // Render는 postgresql://을 사용하지만 Npgsql은 postgres://를 요구함
                 if (!string.IsNullOrEmpty(connectionString) && connectionString.StartsWith("postgresql://"))
                 {
                     connectionString = connectionString.Replace("postgresql://", "postgres://");
+                    Console.WriteLine("[DEBUG] Converted postgresql:// to postgres://");
                 }
+
+                Console.WriteLine($"[DEBUG] Final connectionString: {connectionString?.Substring(0, Math.Min(50, connectionString?.Length ?? 0))}...");
 
                 options.UseNpgsql(connectionString)
                     .EnableSensitiveDataLogging() // 개발 디버깅용
