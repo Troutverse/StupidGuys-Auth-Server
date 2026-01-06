@@ -16,15 +16,18 @@ namespace Persistence
 
             builder.Services.AddDbContext<GameDbContext>(options =>
             {
-                options.UseMySql(
-                        builder.Configuration.GetConnectionString("Default"),
-                        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("Default"))
-                    )
-                    .EnableSensitiveDataLogging() // °³¹ß µğ¹ö±ë¿ë
-                    .EnableDetailedErrors(); // °³¹ß µğ¹ö±ë¿ë
+                // í™˜ê²½ ë³€ìˆ˜ì—ì„œ DATABASE_URL ê°€ì ¸ì˜¤ê¸° (Renderìš©)
+                var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
+                    ?? builder.Configuration.GetConnectionString("Default");
+
+                options.UseNpgsql(connectionString)
+                    .EnableSensitiveDataLogging() // ê°œë°œ ë””ë²„ê¹…ìš©
+                    .EnableDetailedErrors(); // ê°œë°œ ë””ë²„ê¹…ìš©
             });
+
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddControllers();
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -41,7 +44,7 @@ namespace Persistence
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = JwtUtils.SYM_KEY,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.FromMinutes(5) // ¼­¹öµé °£ÀÇ ½Ã½ºÅÛ»ó ½Ã°£ ¿ÀÂ÷
+                    ClockSkew = TimeSpan.FromMinutes(5) // ì„œë²„ë“¤ ê°„ì˜ ì‹œìŠ¤í…œìƒ ì‹œê°„ ì˜¤ì°¨
                 };
             });
 
@@ -50,7 +53,7 @@ namespace Persistence
 
             var app = builder.Build();
 
-            // ½ÇÇà½Ã¸¶´Ù ¸¶ÀÌ±×·¹ÀÌ¼Ç (DBContext ±¸Á¶¸¦ ±â·ÏÇØ¼­ DB ¿¡ Àû¿ëÇÏ±âÀ§ÇÑ ÀÛ¾÷)
+            // ì‹¤í–‰ì‹œë§ˆë‹¤ ë§ˆì´ê·¸ë ˆì´ì…˜ (DBContext êµ¬ì¡°ë¥¼ ê¸°ë¡í•´ì„œ DB ì— ì ìš©í•˜ê¸°ìœ„í•œ ì‘ì—…)
             using (var scope = app.Services.CreateScope())
             {
                 var dbCtx = scope.ServiceProvider.GetRequiredService<GameDbContext>();
@@ -65,10 +68,8 @@ namespace Persistence
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 
