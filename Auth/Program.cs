@@ -28,9 +28,10 @@ namespace Persistence
                     try
                     {
                         var uri = new Uri(databaseUrl.Replace("postgresql://", "postgres://"));
-                        
+                        int port = uri.Port == -1 ? 5432 : uri.Port;
+
                         connectionString = $"Host={uri.Host};" +
-                                         $"Port={uri.Port};" +
+                                         $"Port={port};" +
                                          $"Database={uri.AbsolutePath.TrimStart('/')};" +
                                          $"Username={uri.UserInfo.Split(':')[0]};" +
                                          $"Password={uri.UserInfo.Split(':')[1]};" +
