@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|c:\\users\\pc\\desktop\\stupidguys-auth-server\\auth\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|solutionrelative:auth\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|c:\\users\\pc\\desktop\\stupidguys-auth-server\\auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|solutionrelative:auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Auth\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Auth\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAqwGYAAAA7AAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Program.cs",
+              "RelativeDocumentMoniker": "Auth\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Program.cs",
+              "RelativeToolTip": "Auth\\Program.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAUwGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T05:21:13.601Z",
+              "WhenOpened": "2026-01-06T08:33:27.456Z",
               "EditorCaption": ""
             }
           ]
