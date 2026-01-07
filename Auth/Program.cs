@@ -17,26 +17,35 @@ namespace Persistence
             builder.Services.AddDbContext<GameDbContext>(options =>
             {
                 // 환경 변수에서 DATABASE_URL 가져오기 (Render용)
-                var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
+                var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL")
                     ?? builder.Configuration.GetConnectionString("Default");
 
-                // Render는 postgresql://을 사용하지만 Npgsql은 postgres://를 요구함
-                if (!string.IsNullOrEmpty(connectionString))
-                {
-                    if (connectionString.StartsWith("postgresql://"))
-                    {
-                        connectionString = connectionString.Replace("postgresql://", "postgres://");
-                    }
+                string connectionString;
 
-                    // URL에서 특수문자가 인코딩되어 있을 수 있으므로 디코딩
+                // Render의 postgresql:// URL을 Npgsql 연결 문자열로 변환
+                if (!string.IsNullOrEmpty(databaseUrl) && (databaseUrl.StartsWith("postgresql://") || databaseUrl.StartsWith("postgres://")))
+                {
                     try
                     {
-                        connectionString = Uri.UnescapeDataString(connectionString);
+                        var uri = new Uri(databaseUrl.Replace("postgresql://", "postgres://"));
+                        
+                        connectionString = $"Host={uri.Host};" +
+                                         $"Port={uri.Port};" +
+                                         $"Database={uri.AbsolutePath.TrimStart('/')};" +
+                                         $"Username={uri.UserInfo.Split(':')[0]};" +
+                                         $"Password={uri.UserInfo.Split(':')[1]};" +
+                                         "SSL Mode=Require;" +
+                                         "Trust Server Certificate=true";
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        // 디코딩 실패 시 원본 사용
+                        Console.WriteLine($"[ERROR] Failed to parse DATABASE_URL: {ex.Message}");
+                        connectionString = databaseUrl;
                     }
+                }
+                else
+                {
+                    connectionString = databaseUrl;
                 }
 
                 options.UseNpgsql(connectionString)
