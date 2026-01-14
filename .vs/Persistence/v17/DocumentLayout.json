@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|c:\\users\\pc\\desktop\\stupidguys-auth-server\\auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|solutionrelative:auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|c:\\users\\pc\\desktop\\stupidguys-auth-server\\auth\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{334F3B23-EFE8-6F1A-5E5F-9A2275D56E28}|Auth\\Auth.csproj|solutionrelative:auth\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 2000,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Auth\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Entities\\User.cs",
+              "RelativeToolTip": "Auth\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T02:18:41.041Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "Auth\\Program.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\StupidGuys-Auth-Server\\Auth\\Program.cs",
               "RelativeToolTip": "Auth\\Program.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAUwCkAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAUwGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-06T08:33:27.456Z",
               "EditorCaption": ""
